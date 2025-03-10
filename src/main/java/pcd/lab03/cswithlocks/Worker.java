@@ -1,10 +1,11 @@
 package pcd.lab03.cswithlocks;
 
-import java.util.*;
+import java.util.Random;
 
 public abstract class Worker extends Thread {
 	
 	private Random rand;
+	protected int counter;
 	
 	public Worker(String name){
 		super(name);

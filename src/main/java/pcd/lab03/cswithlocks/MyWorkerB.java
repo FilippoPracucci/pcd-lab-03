@@ -15,11 +15,14 @@ public class MyWorkerB extends Worker {
 		while (true){
 		  try {
 			  lock.lockInterruptibly();
-			  b1();	
+			  counter++;
+			  assert(counter <= 1);
+			  b1();
 			  b2();
 		  } catch (InterruptedException ex) {
 		  } finally {
 			  lock.unlock();
+			  counter--;
 		  }
 		  b3();
 		}
@@ -27,15 +30,15 @@ public class MyWorkerB extends Worker {
 	
 	protected void b1(){
 		println("b1");
-		wasteRandomTime(0,1000);	
+//		wasteRandomTime(0,1000);
 	}
 	
 	protected void b2(){
 		println("b2");
-		wasteRandomTime(100,200);	
+//		wasteRandomTime(100,200);
 	}
 	protected void b3(){
 		println("b3");
-		wasteRandomTime(1000,2000);	
+//		wasteRandomTime(1000,2000);
 	}
 }

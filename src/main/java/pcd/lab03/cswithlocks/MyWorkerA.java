@@ -16,27 +16,30 @@ public class MyWorkerA extends Worker {
 		  a1();	
 		  try {
 			  lock.lockInterruptibly();
-			  a2();	
-			  a3();	
+			  counter++;
+			  assert(counter <= 1);
+			  a2();
+			  a3();
 		  } catch (InterruptedException ex) {
 		  } finally {
 			  lock.unlock();
+			  counter--;
 		  }
 		}
 	}
 	
 	protected void a1(){
 		println("a1");
-		wasteRandomTime(100,500);	
+//		wasteRandomTime(100,500);
 	}
 	
 	protected void a2(){
 		println("a2");
-		wasteRandomTime(300,700);	
+//		wasteRandomTime(300,700);
 	}
 	protected void a3(){
 		println("a3");
-		wasteRandomTime(300,700);	
+//		wasteRandomTime(300,700);
 	}
 }
 
